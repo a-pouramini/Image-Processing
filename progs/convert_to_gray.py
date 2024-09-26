@@ -25,6 +25,8 @@ else:
     colored_jet = cv2.applyColorMap(gray_opencv, cv2.COLORMAP_JET)
     colored_rainbow = cv2.applyColorMap(gray_manual, cv2.COLORMAP_RAINBOW)
 
+    gray_3_channel_1 = cv2.cvtColor(gray_opencv,cv2.COLOR_GRAY2RGB)
+    #gray_3_channel_2 = cv2.merge([gray_opencv,gray_opencv,gray_opencv])
     
     # Plot all the images
     plt.figure(figsize=(15, 10))
@@ -48,6 +50,12 @@ else:
     plt.axis('off')
 
     # Pseudocolored Image (OpenCV Grayscale)
+    plt.subplot(2, 3, 4)
+    plt.imshow(cv2.cvtColor(gray_3_channel_1, cv2.COLOR_BGR2RGB))
+    plt.title("Grayscale (3 Channel)")
+    plt.axis('off')
+
+    # Pseudocolored Image (OpenCV Grayscale)
     plt.subplot(2, 3, 5)
     plt.imshow(cv2.cvtColor(colored_jet, cv2.COLOR_BGR2RGB))
     plt.title("Pseudocolored (COLORMAP_JET)")
@@ -60,6 +68,6 @@ else:
     plt.axis('off')
 
     # Show the plot
-    plt.tight_layout()
+    # plt.tight_layout()
     plt.show()
 
