@@ -1,0 +1,11 @@
+setup.py
+display/__init__.py
+display/plot.py
+progs.egg-info/PKG-INFO
+progs.egg-info/SOURCES.txt
+progs.egg-info/dependency_links.txt
+progs.egg-info/requires.txt
+progs.egg-info/top_level.txt
+read/__init__.py
+read/convert_to_gray.py
+read/read_image.py

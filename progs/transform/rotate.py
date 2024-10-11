@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load the image in grayscale mode
-img = cv2.imread('panda.jpg', 0)
+img = cv2.imread('ghanari.jpg')
 
 # Print image shape (Height, Width)
 print("Image shape:", img.shape)
@@ -11,9 +11,8 @@ h, w = img.shape[:2]
 
 # Calculate the center, angle, and scale for rotation
 center = (w / 2, h / 2)
-angle = 5
+angle = 45
 scale = 1.0
-
 # Get the rotation matrix
 M = cv2.getRotationMatrix2D(center, angle, scale)
 
@@ -31,8 +30,8 @@ M[1, 2] += bound_h / 2 - center[1]
 rotated = cv2.warpAffine(img, M, (bound_w, bound_h))
 
 # Convert grayscale images to RGB for matplotlib display
-img_rgb = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
-rotated_rgb = cv2.cvtColor(rotated, cv2.COLOR_GRAY2RGB)
+img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+rotated_rgb = cv2.cvtColor(rotated, cv2.COLOR_BGR2RGB)
 # Display the images using matplotlib
 plt.figure(figsize=(15, 10))
 
@@ -45,7 +44,7 @@ plt.axis('off')
 # Nearest Neighbor Scaling
 plt.subplot(1, 2, 2)
 plt.imshow(rotated_rgb)
-plt.title(f"Rotated by {angle} Degrees")
+plt.title(f"Rotated by {angle} Degrees: Matrix: {M}")
 plt.axis('off')
 
 # Show all images
