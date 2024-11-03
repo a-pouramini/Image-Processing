@@ -11,7 +11,7 @@ h, w = img.shape[:2]
 
 # Calculate the center, angle, and scale for rotation
 center = (w / 2, h / 2)
-angle = 45
+angle = 30
 scale = 1.0
 # Get the rotation matrix
 M = cv2.getRotationMatrix2D(center, angle, scale)
@@ -38,13 +38,13 @@ plt.figure(figsize=(15, 10))
 # Rotated Image
 plt.subplot(1, 2, 1)
 plt.imshow(img_rgb)
-plt.title("Original Image")
+plt.title(f"Original Image {w,h}")
 plt.axis('off')
 
 # Nearest Neighbor Scaling
 plt.subplot(1, 2, 2)
 plt.imshow(rotated_rgb)
-plt.title(f"Rotated by {angle} Degrees: Matrix: {M}")
+plt.title(f"Rotated by {angle} Degrees: center: {center}")
 plt.axis('off')
 
 # Show all images

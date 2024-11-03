@@ -8,10 +8,10 @@ image = cv2.imread('ghanari.jpg')
 height, width = image.shape[:2] 
 dim = (height, width)
 
-trans_x, trans_y = width / 4, height / 4
+trans_x, trans_y = 50, 60
 T = np.float32([[1, 0, trans_x], 
                 [0, 1, trans_y]]) 
-img_translation = cv2.warpAffine(image, T, (width, height)) 
+img_translation = cv2.warpAffine(image, T, (width + trans_x, height + trans_y)) 
 
 
 img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
