@@ -10,7 +10,7 @@ negative_image = 255 - image
 
 # 2. Log Transformation
 c = 255 / np.log(1 + np.max(image))  # Scale factor to maintain intensity range
-log_image = c * np.log(1 + image)
+log_image = c * np.log(1.0 + image)
 log_image = np.array(log_image, dtype=np.uint8)
 
 # 3. Gamma Correction
