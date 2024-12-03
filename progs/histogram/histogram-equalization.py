@@ -22,21 +22,26 @@ equalized_image = equalized_image.reshape(image.shape).astype(np.uint8)
 
 # Display the original and equalized images for comparison
 plt.figure(figsize=(10, 5))
-plt.subplot(1, 2, 1)
+plt.subplot(3, 2, 1)
 plt.title("Original Image")
 plt.imshow(image, cmap='gray')
-plt.subplot(1, 2, 2)
+plt.subplot(3, 2, 2)
 plt.title("Equalized Image")
 plt.imshow(equalized_image, cmap='gray')
-plt.show()
 
 # Display the histograms for comparison
-plt.figure(figsize=(10, 5))
-plt.subplot(1, 2, 1)
+plt.subplot(3, 2, 3)
 plt.title("Original Histogram")
 plt.hist(image.flatten(), bins=256, range=[0, 256], color='blue', alpha=0.7)
-plt.subplot(1, 2, 2)
+plt.subplot(3, 2, 4)
 plt.title("Equalized Histogram")
 plt.hist(equalized_image.flatten(), bins=256, range=[0, 256], color='green', alpha=0.7)
-plt.show()
+
+equ = cv2.equalizeHist(image)
+res = np.hstack((image,equ))
+
+plt.title("Equalized Histogram using equalizeHist")
+plt.subplot(3, 2, 5)
+plt.imshow(equ, cmap='gray')
+plt.show() 
 
