@@ -16,12 +16,12 @@ sobel_y = cv2.convertScaleAbs(sobel_y)
 sobel_magnitude = cv2.convertScaleAbs(sobel_magnitude)
 
 # Second derivative (Laplacian)
-laplacian = cv2.Laplacian(image, cv2.CV_64F, ksize=11)  # Compute Laplacian
+laplacian = cv2.Laplacian(image, cv2.CV_64F, ksize=3)  # Compute Laplacian
 laplacian = cv2.convertScaleAbs(laplacian)  # Normalize for display
 
 # Highboost Filtering
 # Apply a Gaussian blur (low-pass filter)
-blurred_image = cv2.GaussianBlur(image, (11, 11), 0)
+blurred_image = cv2.GaussianBlur(image, (3, 3), 0)
 
 # Highboost filter equation: I_highboost = I + k * (I - I_lowpass)
 k = 1.5  # Boost factor
