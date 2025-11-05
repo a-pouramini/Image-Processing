@@ -1,6 +1,7 @@
 import cv2
 import matplotlib.pyplot as plt
 from display.plot import show
+import numpy as np
 import sys, os
 parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 print(">>>", parent_dir)
@@ -23,19 +24,26 @@ else:
     green_channel = image[:, :, 1]
     red_channel = image[:, :, 2]
 
+
     # Convert the image to grayscale
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     print("Gray Image shape:", gray_image.shape)
 
+    comp_image = 2*gray_image # all(max(0, gray_image)) 
+    gmin = np.min(comp_image) 
+    gmax = np.max(comp_image) 
+    temp = comp_image - gmin
+    trans_image = (temp/gmax)*255
+    print("gmin:", gmin)
     # Display a small portion of the original image array (for example, 30x50 pixel area)
     sample_size = 30, 50
-    sample_portion = image[:sample_size[0], :sample_size[1]]
+    sample_portion = image[:30, :50]
     # print("Pixel sample :\n", sample_portion)
 
     images = {}
     images["Original Image"] = image
     images["Gray Image"] = gray_image
-    images["Sample Image"] = sample_portion
+    images["Image Transform"] = trans_image
     images["Red Channel"] = dict(image=red_channel, cmap="Reds")
     images["Green Channel"] = dict(image=green_channel, cmap="Greens")
     images["Blue Channel"] = dict(image=blue_channel, cmap="Blues")

@@ -179,7 +179,7 @@ def main():
         save_image_and_fft(cross_image, "Cross Pattern", output_folder, f"cross_pattern_{thickness}")    
 
     # Box Experiments with Different Sizes
-    for rect_size in [(50, 50), (100, 50), (100, 100)]:
+    for rect_size in [(2,2), (10, 10), (50, 50), (100, 50), (100, 100), (200, 200)]:
         box_image = generate_rectangle_image(rect_size=rect_size)
         save_image_and_fft(box_image, f"Box (Size {rect_size})", output_folder, f"box_{rect_size[0]}x{rect_size[1]}")
 
