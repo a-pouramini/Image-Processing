@@ -29,7 +29,13 @@ else:
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     print("Gray Image shape:", gray_image.shape)
 
-    comp_image = 2*gray_image # all(max(0, gray_image)) 
+
+    #new_image = np.minimum(255, gray_image.astype(np.int16) + 50)
+    #new_image = np.minimum(255, gray_image.astype(np.int16) + 255)
+    new_image = np.full_like(gray_image, 245)
+    # new_image = new_image.astype(np.uint8)
+
+    comp_image = gray_image # all(max(0, gray_image)) 
     gmin = np.min(comp_image) 
     gmax = np.max(comp_image) 
     temp = comp_image - gmin
@@ -43,7 +49,7 @@ else:
     images = {}
     images["Original Image"] = image
     images["Gray Image"] = gray_image
-    images["Image Transform"] = trans_image
+    images["Image Transform"] = new_image
     images["Red Channel"] = dict(image=red_channel, cmap="Reds")
     images["Green Channel"] = dict(image=green_channel, cmap="Greens")
     images["Blue Channel"] = dict(image=blue_channel, cmap="Blues")

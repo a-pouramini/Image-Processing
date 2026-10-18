@@ -20,10 +20,11 @@ def show(images, images_per_row=3, show_images=True):
             kwargs = image.copy() 
             image = kwargs.pop("image")
         if len(image.shape) == 2: # Gray Image
-            if not "cmap" in kwargs:
-                plt.imshow(image, cmap='gray', **kwargs)
-            else:
-                plt.imshow(image, **kwargs)
+            plt.imshow(image, cmap='gray', **kwargs)
+            #if not "cmap" in kwargs:
+            #    plt.imshow(image, cmap='gray', **kwargs)
+            #else:
+            #    plt.imshow(image, **kwargs)
         else: # Colored Image
             # Convert the image to RGB (OpenCV uses BGR by default)
             rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
